@@ -68,7 +68,7 @@ Na primeira situação, o teste é feito sem o uso de awaits dentro do código. 
 
 ## Situação 2: index-await
 
-Na segunda situação, o teste é feito usando um await para avaliar se a iata do momento. O esperado aqui, é:
+Na segunda situação, o teste é feito usando um await para avaliar a iata do momento. O esperado aqui, é:
 * Que o teste seja um pouco mais lento que o primeiro
 * Que as execuções sejam feitas intercaldas, POA, GRU, SSA, **exatamente** nesta ordem
 
