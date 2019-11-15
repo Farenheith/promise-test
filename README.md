@@ -58,7 +58,7 @@ consoleInfo('POA')
 consoleInfo('GRU')
 consoleInfo('SSA')
 
-Cada chamada irá avaliar se, a cada volta do laço, o código da iata era o esperado de acordo com a abordagem tomada. As falhas são contadas e impressas ao final do processo. É considerada uma falha quando a iata do momento não for a mesma iata esperada para aquele teste
+Cada chamada irá avaliar se, a cada volta do laço, o código da iata era o esperado de acordo com a abordagem tomada. As falhas são contadas e impressas ao final do processo. É considerada uma falha quando a iata recebida não for a iata esperada do momento.
 
 ## Situação 1: index-no-await
 
