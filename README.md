@@ -28,6 +28,8 @@ Os dois códigos acima são assíncronos e tem pontos de intercalação nas mesm
 * A linha 1 e 3 dos códigos geram promessas e permitem intercalação de outras promessas que eventualmente entrarem na fila de processamento.
 * A linha 2 não é assíncrona, então é impossível ocorrer uma intercalação neste ponto.
 
+No entanto, veja que, em ambos os exemplos, os códigos serão executados de maneira sequencial. Quando olhamos para uma linha de processamento, isto é, uma cadeia de promessas, na prática não faz muita diferença se elas são ou não são assíncronas. No entanto, não é porque elas são sequenciais que elas não são assíncronas, porque se outra linha de processamento estiver em execução, esta linha poderá, em ambos os exemplos, gerar promessas que se intercalarão com essas.
+
 É bom destacar que **quanto mais promessas entrarem na fila de processamento, mais tempo o node levará para gerenciá-las**, pois a lista de promessas é longa e é preciso checar qual está e qual não está pronta para ser executada em sequência. O ideal é que nunca geremos uma lista enorme de promessas para não deixar mais lento esse gerenciamento, mas é importante que processos longos e onerosos, mesmo que sejam executados sem recursos externos, seja transformado em assíncrono, para que ele não trave o processamento da thread do node.
 
 ## Simulação de múltiplas requests
