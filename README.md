@@ -32,7 +32,7 @@ No entanto, veja que, em ambos os exemplos, os códigos serão executados de man
 
 É bom destacar que **quanto mais promessas entrarem na fila de processamento, mais tempo o node levará para gerenciá-las**, pois a lista de promessas é longa e é preciso checar qual está e qual não está pronta para ser executada em sequência. O ideal é que nunca geremos uma lista enorme de promessas para não deixar mais lento esse gerenciamento, mas é importante que processos longos e onerosos, mesmo que sejam executados sem recursos externos, seja transformado em assíncrono, para que ele não trave o processamento da thread do node.
 
-Outro ponto importante: em ambos os exemplos, apenas uma promessa é mantida por vez para execução, por que? Porque uma nova promessa é criada quando a que está em execução está por morrer. A forma que temos de, de fato, gerar várias promessas de uma vez e colocá-las juntas na fila de execução, é algo desse tipo:
+Outro ponto importante: em ambos os exemplos, apenas uma promessa é mantida por vez para execução, porque? Porque uma nova promessa é criada quando a que está em execução está por morrer. A forma que temos de, de fato, gerar várias promessas de uma vez e colocá-las juntas na fila de execução, é algo desse tipo:
 
 ```
 await Promise.all([
