@@ -1,6 +1,34 @@
 # Teste de compotamento de promessas
 
-A ideia é avaliar o impacto em tempo de execução que existe em transformar um processo síncrono em assíncrono, e verificar, com três diferentes abordagens, quais códigos se comportam como esperamos
+A ideia é avaliar o impacto em tempo de execução que existe em transformar um processo síncrono em assíncrono, e verificar, com três diferentes abordagens, quais códigos se comportam como esperamos.
+
+## Conceito de síncrono / assíncrono
+
+É importante destacar que síncrono != sequencial, no nosso cenário. O motor do node é single threaded, ou seja, ele só consegue fazer uma coisa de cada vez. Em um código síncrono em node (isto é, sem geração de promises, de observables, sem async nos métodos, sem await) é impossível que outros códigos se intercalem entre suas linhas, diferente de uma linguagem multi-threaded.
+
+Um código assíncrono, no entanto, permite que outros processamentos se encaixe entre as linhas *assíncronas* do código, que também podemos chamar de *pontos de intercalação*. Dois exemplos de código assíncrono:
+
+```
+await asyncFunc1();
+syncFunc();
+await asyncFunc2();
+console.log('Finished');
+```
+e também:
+
+```
+asyncFunc1().then(() => {
+  syncFunc();
+  return asyncFunc2();
+ }).then(() =>
+  console.log('Finished'));
+```
+
+Os dois códigos acima são assíncronos e tem pontos de intercalação nas mesmas linhas:
+* A linha 1 e 3 dos códigos geram promessas e permitem intercalação de outras promessas que eventualmente entrarem na fila de processamento.
+* A linha 2 não é assíncrona, então é impossível ocorrer uma intercalação neste ponto.
+
+É bom destacar que **quanto mais promessas entrarem na fila de processamento, mais tempo o node levará para gerenciá-las**, pois a lista de promessas é longa e é preciso checar qual está e qual não está pronta para ser executada em sequência. O ideal é que nunca geremos uma lista enorme de promessas para não deixar mais lento esse gerenciamento, mas é importante que processos longos e onerosos, mesmo que sejam executados sem recursos externos, seja transformado em assíncrono, para que ele não trave o processamento da thread do node.
 
 ## Simulação de múltiplas requests
 
