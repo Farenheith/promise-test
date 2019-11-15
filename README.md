@@ -4,7 +4,7 @@ A ideia é avaliar o impacto em tempo de execução que existe em transformar um
 
 ## Conceito de síncrono / assíncrono
 
-É importante destacar que síncrono != sequencial, no nosso cenário. O motor do node é single threaded, ou seja, ele só consegue fazer uma coisa de cada vez. Em um código síncrono em node (isto é, sem geração de promises, de observables, sem async nos métodos, sem await) é impossível que outros códigos se intercalem entre suas linhas, diferente de uma linguagem multi-threaded.
+É importante destacar que síncrono != sequencial, no nosso cenário. O motor do node é single threaded, ou seja, ele só consegue fazer uma coisa de cada vez. Em um código síncrono em node (isto é, sem geração de promises, de observables, sem async nos métodos, sem await) é impossível que outros códigos se intercalem entre suas linhas, diferente de um motor multi-threaded.
 
 Um código assíncrono, no entanto, permite que outros processamentos se encaixem entre as linhas *assíncronas* do código, que também podemos chamar de *pontos de intercalação*. Dois exemplos de código assíncrono:
 
