@@ -1,6 +1,6 @@
 # Teste de compotamento de promessas
 
-A ideia é avaliar o impacto em tempo de execução que existe em transformar um processo síncrono em assíncrono, e verificar, con três diferentes abordagens, quais códigos se comportam como esperamos
+A ideia é avaliar o impacto em tempo de execução que existe em transformar um processo síncrono em assíncrono, e verificar, com três diferentes abordagens, quais códigos se comportam como esperamos
 
 ## Simulação de múltiplas requests
 
