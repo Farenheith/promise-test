@@ -1,4 +1,4 @@
-# Teste de compotamento de promessas
+# Teste de comportamento de promessas
 
 A ideia é avaliar o impacto em tempo de execução que existe em transformar um processo síncrono em assíncrono, e verificar, com três diferentes abordagens, quais códigos se comportam como esperamos.
 
