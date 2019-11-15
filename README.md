@@ -84,7 +84,7 @@ Tanto o primeiro como o segundo teste, mostraram o comportamento esperado, mas o
 
 A intercalação na ordem exata era esperada porque:
 
-* O node, internamente, gerencia a fila de promessas prontas para ser executadas, o que entrar primeiro na fila, é executado primeiro. No caso, a ordem de chamada das funções de teste eram POA, GRU, SSA, então as promessas foram criadas nessa ordem, o que fez elas entrarem, nessa ordem, na fila de promessas.
+* O node, internamente, gerencia a fila de promessas prontas para serem executadas, o que entrar primeiro na fila, é executado primeiro. No caso, a ordem de chamada das funções de teste eram POA, GRU, SSA, então as promessas foram criadas nessa ordem, o que fez elas entrarem, nessa ordem, na fila de promessas.
 
 O motivo para a intercalação não ter sido feita no terceiro caso pode ser explicada da seguinte forma:
 * As três promessas que entraram na fila de execução, primeiramente, foram as três chamadas para consoleInfo;
