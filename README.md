@@ -90,6 +90,7 @@ O motivo para a intercalação não ter sido feita no terceiro caso pode ser exp
 * As três promessas que entraram na fila de execução, primeiramente, foram as três chamadas para consoleInfo;
 * A primeira a ser executada foi POA. Ela criou todas as promessas que ela esperava (colocando-as na fila do node), e depois chamou await Promise.all, o que deu oportunidade para executar a próxima promessa na fila: *consoleInfo('GRU')*;
 * A próxima chamada criou todas as promessas esperadas para GRU, colocando-as na fila, depois chamando await Promise.all, dando oportunidade para a próxima promessa da fila ser executada: *consoleInfo('SSA')*;
+* A próxima chamada criou todas as promessas esperadas para SSA, colocando-as na fila, depois chamando await Promise.all, dando oportunidade para a próxima promessa da fila ser executada: a primeira promessa que foi colocada pela promessa do *consoleInfo('POA')*;
 * Foram executadas as próximas promessas da fila: todas geradas por *consoleInfo('POA')*, pois elas foram postas em ordem;
 * Foram executadas as próximas promessas da fila: todas geradas por *consoleInfo('GRU')*, pois elas foram postas em ordem;
 * Foram executadas as próximas promessas da fila: todas geradas por *consoleInfo('SSA')*, pois elas foram postas em ordem;
