@@ -32,6 +32,19 @@ No entanto, veja que, em ambos os exemplos, os códigos serão executados de man
 
 É bom destacar que **quanto mais promessas entrarem na fila de processamento, mais tempo o node levará para gerenciá-las**, pois a lista de promessas é longa e é preciso checar qual está e qual não está pronta para ser executada em sequência. O ideal é que nunca geremos uma lista enorme de promessas para não deixar mais lento esse gerenciamento, mas é importante que processos longos e onerosos, mesmo que sejam executados sem recursos externos, seja transformado em assíncrono, para que ele não trave o processamento da thread do node.
 
+Outro ponto importante: em ambos os exemplos, apenas uma promessa é mantida por vez para execução, por que? Porque uma nova promessa é criada quando a que está em execução está por morrer. A forma que temos de, de fato, gerar várias promessas de uma vez e colocá-las juntas na fila de execução, é algo desse tipo:
+
+```
+await Promise.all([
+  asyncFunc1(),
+  syncFunc(),
+  asyncFunc2(),
+]);
+console.log('Finished');
+```
+
+Esse código faz entrar, de uma vez, 3 promessas na fila de execução do node, ao contrário dos anteriores, que faz uma nova entrar só quando a anterior morre. Há situações onde o Promise.all pode trazer vantagens, outras que não, e uma abordagem semelhante servirá de base para um dos testes que faremos abaixo.
+
 ## Simulação de múltiplas requests
 
 O código principal possui um promise.all com 3 elementos, para simular a situação onde 3 requests chegam juntas em um servidor e são processadas em paralelo.
