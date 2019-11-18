@@ -53,7 +53,7 @@ Temos duas variáveis para ajudar a calibrar o teste
 * total: para definir quantas voltas o laço de cada requisição fará
 * times: para definir quantos testes serão executados afim de se calcular uma média do resultado
 
-As requets simuladas são as chamadas:
+As requests simuladas são as chamadas:
 consoleInfo('POA')
 consoleInfo('GRU')
 consoleInfo('SSA')
